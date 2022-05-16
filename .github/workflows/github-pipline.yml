@@ -42,6 +42,10 @@ jobs:
 # AKS Cluster Name
        cluster-name: ctse_project_supplier
         
+    - name: Delete image to AKS
+      run: |
+        kubectl delete -f yaml files/deployment.yaml
+        kubectl delete -f yaml files/service.yaml
         
         # Deploy to yaml files cluster
     - name: Deploy to Kubernetes cluster
