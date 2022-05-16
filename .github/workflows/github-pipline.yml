@@ -44,8 +44,8 @@ jobs:
         
     - name: Delete image to AKS
       run: |
-        kubectl delete -f yaml files/deployment.yaml
-        kubectl delete -f yaml files/service.yaml
+        kubectl delete -f yamls/deployment.yaml
+        kubectl delete -f yamls/service.yaml
         
         # Deploy to yaml files cluster
     - name: Deploy to Kubernetes cluster
@@ -53,8 +53,8 @@ jobs:
       with:
 # Path to the manifest files which will be used for deployment.
        manifests: |
-         yaml files/deployment.yaml
-         yaml files/service.yaml
+         yamls/deployment.yaml
+         yamls/service.yaml
 # Fully qualified resource URL of the image(s) to be used for substitutions on the manifest files Example: contosodemo.azurecr.io/helloworld:test
        images: '${{secrets.DOCKER_USERNAME}}/shevonkrishmal/ctse_supplier:0.0.1.RELEASE'
 # Name of a docker-registry secret that has already been set up within the cluster. Each of these secret names are added under imagePullSecrets field for the workloads found in the input manifest files
