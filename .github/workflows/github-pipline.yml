@@ -36,7 +36,7 @@ jobs:
       uses: Azure/aks-set-context@v1
       with:
 # Azure credentials i.e. output of `az ad sp create-for-rbac --sdk-auth`
-       creds: '${{secrets.AZURE_CREDENTIALS}}'
+       creds: ${{secrets.AZURE_CREDENTIALS}}
 # Resource Group Name
        resource-group: ctse_project_shevon
 # AKS Cluster Name
