@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: supplier-service
+  data:
+    mongodb:
+      uri: mongodb+srv://shevon:ctse1234@supplier.c9zso.mongodb.net/supplier_details?retryWrites=true&w=majority
+  profiles:
+    active: local

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ctse-supplier
+  labels:
+    app: ctse-supplier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ctse-supplier
+  template:
+    metadata:
+      labels:
+        app: ctse-supplier
+    spec:
+      containers:
+      - name: ctse-supplier
+        image: shevonkrishmal/ctse_supplier:0.0.1.RELEASE
+        ports:
+        - containerPort: 8080
