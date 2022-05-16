@@ -42,4 +42,19 @@ jobs:
 # AKS Cluster Name
        cluster-name: ctse_project_supplier
         
+        
+        # Deploy to yaml files cluster
+    - name: Deploy to Kubernetes cluster
+      uses: Azure/k8s-deploy@v1
+      with:
+# Path to the manifest files which will be used for deployment.
+       manifests: |
+         yaml files/deployment.yaml
+         yaml files/service.yaml
+# Fully qualified resource URL of the image(s) to be used for substitutions on the manifest files Example: contosodemo.azurecr.io/helloworld:test
+       images: '${{secrets.DOCKER_USERNAME}}/shevonkrishmal/ctse_supplier:0.0.1.RELEASE'
+# Name of a docker-registry secret that has already been set up within the cluster. Each of these secret names are added under imagePullSecrets field for the workloads found in the input manifest files
+       imagepullsecrets: docker-image-pull-secret
+# deploy/promote/reject
+       action: deploy
   
