@@ -19,3 +19,4 @@ spec:
         image: shevonkrishmal/ctse_supplier:0.0.1.RELEASE
         ports:
         - containerPort: 8080
+        imagePullPolicy: Always
