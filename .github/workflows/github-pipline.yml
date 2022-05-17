@@ -35,11 +35,8 @@ jobs:
     - name: Azure Kubernetes set context
       uses: Azure/aks-set-context@v1
       with:
-# Azure credentials i.e. output of `az ad sp create-for-rbac --sdk-auth`
        creds: ${{secrets.AZURE_CREDENTIALS}}
-# Resource Group Name
        resource-group: ctse_project_shevon
-# AKS Cluster Name
        cluster-name: ctse_project_supplier
         
     - name: Delete image to AKS
@@ -51,14 +48,13 @@ jobs:
     - name: Deploy to Kubernetes cluster
       uses: Azure/k8s-deploy@v1
       with:
-# Path to the manifest files which will be used for deployment.
+
        manifests: |
          yamls/deployment.yaml
          yamls/service.yaml
-# Fully qualified resource URL of the image(s) to be used for substitutions on the manifest files Example: contosodemo.azurecr.io/helloworld:test
+
        images: '${{secrets.DOCKER_USERNAME}}/shevonkrishmal/ctse_supplier:0.0.1.RELEASE'
-# Name of a docker-registry secret that has already been set up within the cluster. Each of these secret names are added under imagePullSecrets field for the workloads found in the input manifest files
        imagepullsecrets: docker-image-pull-secret
-# deploy/promote/reject
+     
        action: deploy
   
