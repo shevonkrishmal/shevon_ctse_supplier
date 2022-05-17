@@ -14,7 +14,6 @@ import java.util.Map;
 
 import com.ctse_assignment3.supplier_it19107356.model.supplier;
 
-
 @RestController
 @RequestMapping("/api")
 public class supplierController {
@@ -22,8 +21,10 @@ public class supplierController {
     @Autowired
     private supplierRepository supplierRepository;
 
- /*   @Autowired
-    private supplierService supplierService;*/
+    /*
+     * @Autowired
+     * private supplierService supplierService;
+     */
 
     @GetMapping("/supplier/all")
     public List<supplier> getAllSuppliers() {
@@ -40,13 +41,13 @@ public class supplierController {
     }
 
     @PostMapping("/supplier")
-    public supplier createSupplier( @RequestBody supplier supplier) {
+    public supplier createSupplier(@RequestBody supplier supplier) {
         return supplierRepository.save(supplier);
     }
 
-    @PutMapping("/supplier/{id}")
+    @PutMapping("/supplier/edit/{id}")
     public ResponseEntity<supplier> updateSupplier(@PathVariable(value = "id") Long supplierId,
-             @RequestBody supplier supplierDetails) throws ResourceNotFoundException {
+            @RequestBody supplier supplierDetails) throws ResourceNotFoundException {
         supplier supplier = supplierRepository.findById(supplierId)
                 .orElseThrow(() -> new ResourceNotFoundException("Supplier not found for this id :: " + supplierId));
 
@@ -61,7 +62,7 @@ public class supplierController {
 
     }
 
-    @DeleteMapping("/supplier/{id}")
+    @DeleteMapping("/supplier/delete/{id}")
     public Map<String, Boolean> deleteSupplier(@PathVariable(value = "id") Long supplierId)
             throws ResourceNotFoundException {
 
