@@ -15,6 +15,7 @@ import java.util.Map;
 import com.ctse_assignment3.supplier_it19107356.model.supplier;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class supplierController {
 
